@@ -38,13 +38,15 @@ function generateMarkdown(data) {
   * [Description](#description)
   * [Installation](#installation)
   * [Usage](#usage)
-  ${renderLicenseSection(data.license)}
+  ${renderLicenseTOC(data.license)}
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Questions](#questions)
   
   ##[Description](#table-of-contents)
-  ${data.use}
+  ${data.what}
+  ${data.why}
+  ${data.how}
   
   ##[Installation](#table-of-contents)
   ${data.installation}

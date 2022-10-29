@@ -1,7 +1,9 @@
 // packages
 const fs = require('fs');
+const util = require("util");
 const inquirer = require('inquirer');
 const generateMarkdown = ('./utils/generateMarkdown.js');
+const writeFileAsync = util.promisify(fs.writeFile);
 
 // questions
 const questions = [
@@ -46,10 +48,10 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'use',
+        name: 'what',
         message: 'What is the projects intended use (required): ',
-        validate: useInput => {
-            if (useInput) {
+        validate: whatInput => {
+            if (whatInput) {
                 return true;
             } else {
                 console.log('Project use is required.');
@@ -105,7 +107,7 @@ const questions = [
 ];
 
 // function to write README file
-function writeToFile(fileName, data) {
+function writeFile(fileName, data) {
     fs.writeFile(`./dist/${fileName}`, data, error => {
         if (error) {
             throw error
